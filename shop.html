@@ -14,7 +14,15 @@
 <a href="cart.html">Cart</a>
 </div>
 </nav>
-
+<h2 style="text-align:center">Filters</h2>
+<div style="text-align:center;margin:15px">
+<select onchange="filterCat(this.value)">
+<option value="">All</option>
+<option>Men</option>
+<option>Women</option>
+<option>Kids</option>
+</select>
+</div>
 <div class="products" id="productList"></div>
 
 </body>
