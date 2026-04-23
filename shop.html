@@ -3,8 +3,22 @@
 <head>
 <title>Shop - Raid Clothing</title>
 <link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
-</head>
+<script src="script.js"></script> 
+<script>
+function filterCat(cat){
+document.getElementById("productList").innerHTML="";
+let filtered=cat?products.filter(p=>p.cat==cat):products;
+filtered.forEach((p,i)=>{
+document.getElementById("productList").innerHTML+=`
+<div class="card">
+<img src="${p.img}">
+<h3>${p.name}</h3>
+<p>₹${p.price}</p>
+<button onclick="addCart(${i})">Add to Cart</button>
+</div>`;
+});
+}
+</script> </head>   
 <body onload="loadProducts()">
 
 <nav>
