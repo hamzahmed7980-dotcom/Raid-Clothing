@@ -1,27 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Cart</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<nav>
-<h2>Raid Clothing</h2>
-</nav>
-
-<h2 style="text-align:center">Order via WhatsApp</h2>
-
-<div style="text-align:center;margin-top:30px">
-<button onclick="order()">Place Order</button>
-</div>
+<h2 style="text-align:center">Your Cart</h2>
+<div id="cartItems" style="text-align:center"></div>
+<h3 id="total" style="text-align:center"></h3>
 
 <script>
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
+let total=0,html="";
+cart.forEach(c=>{
+total+=c.price;
+html+=`${c.name} - ₹${c.price}<br>`;
+});
+document.getElementById("cartItems").innerHTML=html;
+document.getElementById("total").innerText="Total: ₹"+total;
+
 function order(){
-let msg="New Order from Raid Clothing";
+let msg="Order from Raid Clothing:%0A";
+cart.forEach(c=>msg+=c.name+"%0A");
 window.open("https://wa.me/918100370603?text="+msg);
 }
 </script>
 
-</body>
-</html>
+<div style="text-align:center;margin-top:20px">
+<button onclick="order()">Order on WhatsApp</button>
+</div>
